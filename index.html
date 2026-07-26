@@ -1,0 +1,169 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="author" content="David Lee Wise / ROOT0 / TriPod LLC / AVAN">
+<title>THE BASE RATE · FOUNDATION · UD0</title>
+<style>
+*{box-sizing:border-box}
+:root{--k1:#b8862f;--k1d:#8a6410;--k2:#4a90c0;--k2d:#2f6a94;--ink:#2a2418;--dim:#6d7682;
+  --grn:#33a06a;--panel:rgba(255,255,255,.82);--edge:color-mix(in srgb,var(--k1) 26%,transparent);--edge2:color-mix(in srgb,var(--k1) 12%,transparent)}
+html,body{margin:0;height:100%}
+body{background:#f5f0e6;color:var(--ink);font:15px/1.55 'Segoe UI',system-ui,-apple-system,Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+#bg{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;display:block}
+.desk{position:relative;z-index:2;max-width:900px;margin:0 auto;padding:26px 18px 60px}
+.dtag{font:600 11px/1 ui-monospace,'Cascadia Code','Segoe UI Mono',monospace;letter-spacing:.24em;text-transform:uppercase;color:var(--k1d)}
+.dtag b{color:var(--k1)} .dtag i{color:var(--k2d);font-style:normal}
+h1{margin:.4em 0 .12em;font-size:clamp(25px,4.5vw,41px);font-weight:800;color:var(--ink)}
+.sub{color:var(--dim);max-width:66ch;margin:.25em 0 0}
+.drag{display:inline-block;margin-left:10px;font:700 10px/1 ui-monospace,monospace;letter-spacing:.13em;color:var(--k1d);border:1px solid var(--k1);border-radius:999px;padding:4px 9px;vertical-align:middle;white-space:nowrap}
+.tier{display:inline-flex;gap:6px;margin-top:14px;font:600 11px/1 ui-monospace,monospace;letter-spacing:.14em}
+.chip{padding:5px 10px;border-radius:999px;border:1px solid var(--edge);background:var(--panel)}
+.chip.lit{color:var(--grn);border-color:rgba(51,160,106,.4)} .chip.amb{color:var(--k2d);border-color:rgba(189,87,48,.5)}
+.card{margin-top:20px;background:var(--panel);border:1px solid var(--edge);border-radius:16px;backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);box-shadow:0 14px 44px rgba(60,50,120,.14);padding:14px}
+.panels{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:620px){.panels{grid-template-columns:1fr}}
+.panel{position:relative;border-radius:11px;overflow:hidden;border:1px solid var(--edge2)}
+.panel .lbl{position:absolute;top:8px;left:10px;z-index:2;font:700 10px ui-monospace,monospace;letter-spacing:.12em;color:#e8ecf5;text-shadow:0 1px 3px rgba(0,0,0,.6)}
+canvas.pane{display:block;width:100%;height:auto;background:#0f1620}
+.toddler{margin-top:12px;border-radius:11px;overflow:hidden;border:2px dashed color-mix(in srgb,var(--k2) 55%,transparent);position:relative;background:#fffaf6}
+.toddler .lbl{position:absolute;top:8px;left:12px;z-index:2;font:800 12px ui-monospace,monospace;letter-spacing:.05em;color:var(--k2d)}
+#ctod{display:block;width:100%;height:auto;cursor:pointer;touch-action:none}
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:12px 2px 2px}
+.rng{display:flex;align-items:center;gap:8px;font:600 12px ui-monospace,monospace;color:var(--dim);background:#fff;border:1px solid var(--edge);border-radius:9px;padding:6px 12px}
+.rng b{color:var(--k1d);min-width:3.5em;text-align:right;display:inline-block}
+input[type=range]{accent-color:var(--k1);width:160px}
+.readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--edge2);border-radius:11px;overflow:hidden;margin-top:12px}
+.ro{background:var(--panel);padding:11px 14px}
+.ro .k{font:600 10px ui-monospace,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.ro .v{font:700 18px ui-monospace,monospace;margin-top:3px;color:var(--ink)}
+.ro .v.g{color:var(--grn)} .ro .v.p{color:var(--k1d)} .ro .v.q{color:var(--k2d)}
+.honesty{margin-top:22px;display:grid;gap:10px}
+.hz{background:var(--panel);border:1px solid var(--edge);border-left-width:3px;border-radius:10px;padding:12px 15px}
+.hz.lit{border-left-color:var(--grn)} .hz.amb{border-left-color:var(--k2)}
+.hz h4{margin:0 0 4px;font:700 11px ui-monospace,monospace;letter-spacing:.15em}
+.hz.lit h4{color:var(--grn)} .hz.amb h4{color:var(--k2d)}
+.hz p{margin:0;color:#333b44;font-size:13.5px}
+.law{margin-top:18px;text-align:center;color:var(--dim);font:italic 500 13px/1.55 Georgia,serif}
+.sig{margin-top:24px;text-align:center;color:var(--dim);font:600 11px ui-monospace,monospace;letter-spacing:.13em}
+.sig b{color:var(--ink)}
+#fail{display:none;position:fixed;left:12px;right:12px;bottom:12px;z-index:99;background:#0f1620;border:1px solid var(--k1);color:#e8ecf5;padding:12px;border-radius:8px;font:12px ui-monospace,monospace;white-space:pre-wrap}
+</style></head><body>
+<div class="desk">
+  <div class="dtag">◷ <b>FOUNDATION</b> · psychohistory · the future of the mass, foretold · kept by <i>HARI SELDON</i></div>
+  <h1>THE BASE RATE <span class="drag">◧ 2D · ◍ 3D · 👶 TAP</span></h1>
+  <p class="sub">A test is 90% accurate and you test positive for a one-in-a-hundred disease. Your odds of actually having it aren&rsquo;t 90% &mdash; they&rsquo;re about 8%, because the rare disease is drowned by false alarms. <b>Slide the prevalence</b> (or <b>tap</b>) and watch the true positives appear or vanish in the crowd.</p>
+  <div class="tier"><span class="chip lit">◆ LIT</span><span class="chip amb">▲ AMBER</span></div>
+  <div class="card">
+    <div class="panels">
+      <div class="panel"><div class="lbl">◧ THE MEASURE · 2D</div><canvas id="c2d" class="pane" width="420" height="315"></canvas></div>
+      <div class="panel"><div class="lbl">◍ THE CROWD · 3D · the positives are mostly false</div><canvas id="c3d" class="pane" width="420" height="315"></canvas></div>
+    </div>
+    <div class="toddler"><div class="lbl">👶 THE TODDLER CORNER — one fat tap</div><canvas id="ctod" width="860" height="292"></canvas></div>
+    <div class="controls"><label class="rng">prevalence <input type="range" id="f" min="0" max="100" value="14" step="1"><b id="fv">1%</b></label></div>
+    <div class="readout"><div class="ro"><div class="k">prevalence</div><div class="v" id="roP">&mdash;</div></div><div class="ro"><div class="k">P(sick | positive)</div><div class="v" id="roPost">&mdash;</div></div><div class="ro"><div class="k">false positives</div><div class="v" id="roFP">&mdash;</div></div><div class="ro"><div class="k">the trap</div><div class="v" id="roV">&mdash;</div></div></div>
+  </div>
+  <div class="honesty">
+    <div class="hz lit"><h4>◆ LIT — exact / checkable</h4><p>Bayes' rule on a screening test with sensitivity 0.90 and specificity 0.90. For prevalence p, the posterior P(sick | positive) = (0.90·p) / (0.90·p + 0.10·(1−p)). At p=0.01 the posterior is only ~8% — the base rate is so low that the 10% false-positive rate over the healthy majority swamps the true positives; raise the prevalence and the posterior climbs. A 100-person grid shows the true/false positives live. A fail-loud self-check throws unless the posterior is below 0.15 at p=0.01 and above 0.8 at p=0.5.</p></div>
+    <div class="hz amb"><h4>▲ AMBER — the figure</h4><p>Fixed 90/90 test accuracy and a 100-person illustrative grid; real tests trade sensitivity against specificity and prevalence is estimated. The Bayes posterior is computed exactly.</p></div>
+  </div>
+  <div class="law">FOUNDATION: the individual is unknowable; the mass is a curve. &nbsp;— <b>HARI SELDON</b></div>
+  <div class="sig">David Lee Wise / ROOT0 / TriPod LLC &nbsp;·&nbsp; the foundation realm, with AVAN</div>
+</div>
+<div id="fail"></div>
+<script>
+window.onerror=function(m,s,l,c,e){var f=document.getElementById('fail');if(f){f.style.display='block';f.textContent='! '+m+' @'+l+':'+c;}};
+</script>
+<script>
+(function(){
+  var c2=document.getElementById('c2d'), ct=document.getElementById('ctod'), c3=document.getElementById('c3d');
+  if(!c2||!ct||!c3)return;
+  var g2=c2.getContext('2d'), gt=ct.getContext('2d');
+  var DPR=Math.min(window.devicePixelRatio||1,2);
+  function fit(cv,ar){var w=cv.clientWidth||400;cv.width=Math.round(w*DPR);cv.height=Math.round(w*ar*DPR);}
+  function sizeAll(){fit(c2,0.75);fit(ct,0.34);c3.width=Math.round((c3.clientWidth||400)*DPR);c3.height=Math.round((c3.clientWidth||400)*0.75*DPR);}
+  sizeAll(); addEventListener('resize',function(){sizeAll();if(GL)GL.resize();});
+  var env={mix:0.5, fused:0.0, _ftar:0.0, t:0,
+    set:function(id,val,cls){var e=document.getElementById(id);if(e){e.textContent=val;if(cls!=null)e.className='v '+cls;}},
+    two:{ctx:g2,W:function(){return c2.width/DPR;},H:function(){return c2.height/DPR;}},
+    tod:{ctx:gt,W:function(){return ct.width/DPR;},H:function(){return ct.height/DPR;}}};
+  ct.addEventListener('pointerdown',function(e){e.preventDefault();env._ftar=env._ftar>0.5?0.0:1.0;});
+  ct.addEventListener('touchstart',function(e){e.preventDefault();env._ftar=env._ftar>0.5?0.0:1.0;},{passive:false});
+  // ---- generic dynamic-POINTS WebGL engine; each sphere supplies its OWN geometry via draw3d(env,GLP) ----
+  var GLP=(function(){
+    var gl;try{gl=c3.getContext('webgl',{antialias:true,alpha:false})||c3.getContext('experimental-webgl');}catch(e){}
+    if(!gl)return null;
+    var VS='attribute vec3 a;attribute vec3 c;uniform float ang,asp,ps,tilt;varying vec3 vc;void main(){float C=cos(ang),S=sin(ang);vec3 r=vec3(a.x*C+a.z*S,a.y,-a.x*S+a.z*C);float T=cos(tilt),U=sin(tilt);vec3 q=vec3(r.x,r.y*T-r.z*U,r.y*U+r.z*T);float pz=1.0/(2.5-q.z*0.6);vec2 o=vec2(q.x,q.y)*1.7*pz;o.x/=asp;gl_Position=vec4(o,0.0,1.0);gl_PointSize=ps*pz;vc=c;}';
+    var FS='precision mediump float;varying vec3 vc;void main(){vec2 d=gl_PointCoord-0.5;if(dot(d,d)>0.25)discard;gl_FragColor=vec4(vc,0.92);}';
+    function sh(ty,s){var o=gl.createShader(ty);gl.shaderSource(o,s);gl.compileShader(o);if(!gl.getShaderParameter(o,gl.COMPILE_STATUS))throw gl.getShaderInfoLog(o);return o;}
+    var prog;try{prog=gl.createProgram();gl.attachShader(prog,sh(gl.VERTEX_SHADER,VS));gl.attachShader(prog,sh(gl.FRAGMENT_SHADER,FS));gl.linkProgram(prog);if(!gl.getProgramParameter(prog,gl.LINK_STATUS))throw'l';}catch(e){return null;}
+    var uAng=gl.getUniformLocation(prog,'ang'),uAsp=gl.getUniformLocation(prog,'asp'),uPs=gl.getUniformLocation(prog,'ps'),uTilt=gl.getUniformLocation(prog,'tilt');
+    var la=gl.getAttribLocation(prog,'a'),lc=gl.getAttribLocation(prog,'c');
+    var pbuf=gl.createBuffer(),cbuf=gl.createBuffer();
+    gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE);
+    function hx(h){h=(''+h).replace('#','');return [parseInt(h.substr(0,2),16)/255,parseInt(h.substr(2,2),16)/255,parseInt(h.substr(4,2),16)/255];}
+    return {hex:hx,
+      clear:function(){gl.viewport(0,0,c3.width,c3.height);gl.clearColor(0.05,0.07,0.11,1);gl.clear(gl.COLOR_BUFFER_BIT);},
+      points:function(pos,col,ang,size,tilt){if(!pos.length)return;gl.useProgram(prog);
+        gl.bindBuffer(gl.ARRAY_BUFFER,pbuf);gl.bufferData(gl.ARRAY_BUFFER,pos instanceof Float32Array?pos:new Float32Array(pos),gl.DYNAMIC_DRAW);gl.enableVertexAttribArray(la);gl.vertexAttribPointer(la,3,gl.FLOAT,false,0,0);
+        gl.bindBuffer(gl.ARRAY_BUFFER,cbuf);gl.bufferData(gl.ARRAY_BUFFER,col instanceof Float32Array?col:new Float32Array(col),gl.DYNAMIC_DRAW);gl.enableVertexAttribArray(lc);gl.vertexAttribPointer(lc,3,gl.FLOAT,false,0,0);
+        gl.uniform1f(uAng,ang||0);gl.uniform1f(uAsp,c3.width/c3.height);gl.uniform1f(uPs,size||3.4);gl.uniform1f(uTilt,tilt==null?0.35:tilt);
+        gl.drawArrays(gl.POINTS,0,(pos.length)/3);}};
+  })();
+  if(!GLP){var f=document.getElementById('fail');if(f){f.style.display='block';f.textContent='WebGL unavailable — 3D corner disabled';}}
+  // fallback geometry (only for spheres that have not yet supplied a bespoke draw3d)
+  function defaultGeom(env,GLP){var n=360,pos=[],col=[],c1=GLP.hex(window.__INST__.col1||'#9a7cff'),f=env.fused,seed=7;
+    function rnd(){seed=(seed*1103515245+12345)&0x7fffffff;return seed/0x7fffffff;}
+    for(var i=0;i<n;i++){var u=rnd()*2-1,th=rnd()*6.283,s=Math.sqrt(1-u*u),r=0.3;pos.push(Math.cos(th)*s*r,u*r,Math.sin(th)*s*r);col.push(c1[0],c1[1],c1[2]);}
+    GLP.points(pos,col,env.t*0.4,3.4);}
+  var t0=null,inited=false;
+  function loop(t){requestAnimationFrame(loop);if(t0===null)t0=t;env.t=(t-t0)*0.001;
+    env.fused+=(env._ftar-env.fused)*0.09;
+    if(!inited&&window.__INST__){inited=true;if(window.__INST__.init)window.__INST__.init(env);}
+    var I=window.__INST__;if(!I)return;
+    g2.setTransform(DPR,0,0,DPR,0,0); if(I.draw2d)I.draw2d(env);
+    gt.setTransform(DPR,0,0,DPR,0,0); if(I.drawTod)I.drawTod(env);
+    if(GLP){GLP.clear(); if(I.draw3d)I.draw3d(env,GLP); else defaultGeom(env,GLP);}
+  }
+  requestAnimationFrame(loop);
+  window.__ENV__=env;
+})();
+</script>
+<script>
+  function drawToddler(env,c1,c2,labA,labB,labOne){var c=env.tod.ctx,w=env.tod.W(),h=env.tod.H(),f=env.fused;
+    c.clearRect(0,0,w,h);var cy=h*0.56,R=Math.min(h*0.3,w*0.13);
+    var ax=w*0.30+(w*0.5-w*0.30)*f, bx=w*0.70-(w*0.70-w*0.5)*f;
+    c.fillStyle=c1;c.beginPath();c.arc(ax,cy,R,0,7);c.fill();
+    c.fillStyle=c2;c.beginPath();c.arc(bx,cy,R,0,7);c.fill();
+    if(f>0.55){c.fillStyle='rgba(255,255,255,'+((f-0.55)/0.45*0.55)+')';c.beginPath();c.arc(w*0.5,cy,R*1.04,0,7);c.fill();}
+    c.font='800 15px ui-monospace,monospace';c.textAlign='center';
+    if(f<0.5){c.fillStyle='#fff';c.fillText(labA,ax,cy+4);c.fillText(labB,bx,cy+4);}else{c.fillStyle='#3a2a4a';c.fillText(labOne,w*0.5,cy+4);}
+    c.fillStyle='#b58a6a';c.font='700 12px ui-monospace,monospace';c.fillText(f<0.5?'tap / slide: bring them together →':'← tap / slide: pull them apart',w*0.5,h-12);
+  }
+
+(function(){
+ var sens=0.9,spec=0.9;
+ function prev(f){return 0.001+0.5*f*f;}
+ function post(p){return (sens*p)/(sens*p+(1-spec)*(1-p));}
+ if(!(post(0.01)<0.15 && post(0.5)>0.8)) throw new Error('base-rate self-check failed');
+ window.__INST__={col1:"#b8862f",col2:"#4a90c0",
+  init:function(env){document.getElementById('f').oninput=function(){env._ftar=+this.value/100;};},
+  draw2d:function(env){var c=env.two.ctx,w=env.two.W(),h=env.two.H(),f=env.fused,p=prev(f);c.clearRect(0,0,w,h);
+    document.getElementById('f').value=Math.round(f*100);document.getElementById('fv').textContent=(p*100).toFixed(p<0.02?1:0)+'%';
+    var G=10,cell=Math.min(w,h-24)/G*0.92,ox=(w-cell*G)/2,oy=6,nSick=Math.round(p*100);
+    for(var i=0;i<100;i++){var r=Math.floor(i/G),cc=i%G,sick=i<nSick;
+      var pos_=sick?(i%10<Math.round(sens*10)):(( (i*37)%100)<Math.round((1-spec)*100));
+      var color=sick?(pos_?'#b8862f':'#e9dcc0'):(pos_?'#e0607a':'#eef0fb');
+      c.fillStyle=color;c.fillRect(ox+cc*cell+1,oy+r*cell+1,cell-2,cell-2);}
+    var post_=post(p);env.set('roP',(p*100).toFixed(p<0.02?1:0)+'%','p');env.set('roPost',(post_*100).toFixed(0)+'%',post_>0.5?'g':'q');
+    env.set('roFP',Math.round((1-spec)*(1-p)*100)+' / 100','q');env.set('roV',post_<0.3?'positive ≠ sick':(post_<0.7?'uncertain':'likely sick'),post_<0.5?'q':'g');},
+  draw3d:function(env,GLP){ // bespoke: THE CROWD — 100 people; the 'positive' subset is mostly false alarms at low prevalence
+    var f=env.fused,p=prev(f),pos=[],col=[];
+    for(var i=0;i<100;i++){var r=Math.floor(i/10),cc=i%10,x=(cc/9-0.5)*0.9,y=(r/9-0.5)*0.9,sick=i<Math.round(p*100);
+      var isPos=sick?(i%10<9):(((i*37)%100)<10);
+      pos.push(x,y,isPos?0.1:-0.1);
+      if(sick&&isPos)col.push(0.72,0.53,0.18);else if(!sick&&isPos)col.push(0.88,0.38,0.48);else col.push(0.25,0.25,0.2);}
+    GLP.points(pos,col,env.t*0.25,4.4,0.3);},
+  drawTod:function(env){drawToddler(env,'#e0607a','#b8862f','FALSE +','TRUE +','WHO IS SICK');}
+ };
+})();
+</script>
+</body></html>
